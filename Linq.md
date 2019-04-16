@@ -72,3 +72,85 @@
 	First name and gender using anonymous
 	.select(emp => new {fristName= emp.firstName, Gender= emp.Gender});
 	
+	12) SelectMany:-
+	//SQL Like
+	From s in strArray
+	From c in s
+	Select c;
+	
+	//With Linq
+	.SelectMany(s=> s);
+	
+	13) Difference b/w select and selectMany
+	Select many will flatten the lists to one list.
+	Select will return list of list.
+	
+	14) Ordering operator in Linq:
+	OrderBy or OrderByDescending works well if we need to sort a collection just by one value or expression.
+	--OrderBy(s=>s.name);
+	--OrderByDescending(s=>s.name);
+	
+	ThenBy and ThenByDescending works well if we have multiple expression.
+	
+	-- OrderBy(s=>s.mark).ThenBy(s=>s.Name).ThenBy(s=>s.StudenId);
+	--OrderBy(s=>s.mark).ThenBy(s=>s.Name).ThenByDescending(s=>s.StudenId);
+	-- reverse will just reverse the items in the list.
+	
+	15) Partitioning operator:
+	-- Take
+	String[] countries = {"Australia","Canada","Germany","US", "India"};
+	Countries.take(3)
+	Output-- "Australia", "Canada","Germany"
+	--Skip
+	Skip the specified number of elements
+	Countries.skip(3)
+	Output--"US", "India"
+	--TakeWhile
+		-- Return countries starting from the beginning of the array until a country name 
+		Is hit that does not have length greater than 2 chars.
+	Countries.TakeWhile(s=>s.length>2);
+	Output: "Australia", "Canada","Germany"
+	--SkipWhile
+	Countries.TakeWhile(s=>s.length>2);
+	Output: "US", "India"
+	
+	16) Paging: 
+	It can be implemented using skip and take operator.
+	
+	17) Deferred execution or greedy execution:
+	//The query executed when we iterate over the result object and not when we declare the query.
+	Select, Where, take, skip are lazy operators
+	//Greedy operators.
+	Count, Average, min, max, ToList are greedy operators.
+	
+	18) Conversion Operator:
+	ToList, ToArray,ToDictonary, ToLookup
+	Cast,offtype,AsEnumerable,AsQueryable
+	
+	
+	ToLookUp creates a lookup, it's like a dictionary, a look up can contain duplicate keys whereas a dictionary cannot.
+	This is kind of a group by.
+	
+	19) Cast and oftype:
+	Cast - convert all the items within an existing collection to another type and return them in new collection. It is used for differed execution. If casting fails, an exception will be thrown and it will throw when we are iterating over results.
+	
+	OfType: It will not fail while casting if types does not match. It will discard others and give us the desired types.
+	
+	20) AsEnumerable and AsQuerable:
+	
+	AsEnumerable breaks the LINQ to two parts. The inside part (This is executed as LINQ to SQL)and outside part(executed as LINQ to objects).
+	This is used to move query execution to the client side.
+	
+	21) GroupBy operator
+	It belongs to grouping operator category. The output is (Igrouping<k,v).
+	The output is of dictionary type.
+	
+	
+	
+	
+	
+	
+	
+	
+
+
